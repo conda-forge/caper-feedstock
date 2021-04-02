@@ -1,5 +1,5 @@
 {% set name = "caper" %}
-{% set version = "1.4.2" %}
+{% set version = "1.5.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 33a963c47f9b43c6070c81cd80a40b27df3c00ccc1f7078045a84bb0a7ea8f59 
+  sha256: 33da80480ff173959c4cecc681875be66cd2cf31f5add34b57f8f30e3098637b
 
 build:
-  skip: True  # [py<36 or win]
-  number: 1
-  script: "{{ PYTHON }} -m pip install . -vv"
+  skip: true  # [py<36 or win]
+  number: 0
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
@@ -41,7 +41,7 @@ about:
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: 'Cromwell Assisted Pipeline ExecutoR'
+  summary: Cromwell Assisted Pipeline ExecutoR
   description: |
     Python wrapper for Cromwell
   dev_url: https://github.com/ENCODE-DCC/caper
