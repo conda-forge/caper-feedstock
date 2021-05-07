@@ -1,5 +1,5 @@
 {% set name = "caper" %}
-{% set version = "1.6.0" %}
+{% set version = "1.6.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: bdf2b76bdfb1f7f7433df70d0ac2e82bf3b0771e269ce1dd29ee3f04fc47e02f
+  sha256: 407dd3ce0afd403dc7a691b95f716ec38794c92d4c039eb3a928fda4a942f062
 
 build:
   skip: true  # [py<36 or win]
