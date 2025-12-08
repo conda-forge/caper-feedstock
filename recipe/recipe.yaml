@@ -19,11 +19,11 @@ build:
 
 requirements:
   host:
-    - python
+    - python =${{ python_min }}
     - pip
     - setuptools
   run:
-    - python
+    - python >=${{ python_min }}
     - pyhocon >=0.3.53
     - requests >=2.20
     - pyopenssl
@@ -41,6 +41,12 @@ tests:
       imports:
         - caper
       pip_check: true
+  - requirements:
+      run:
+        - pip
+        - python =${{ python_min }}
+    script:
+      - pip check
 
 about:
   license: MIT
