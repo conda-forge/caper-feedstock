@@ -1,18 +1,20 @@
-{% set name = "caper" %}
-{% set version = "2.1.0" %}
+schema_version: 1
+
+context:
+  version: 2.3.2
 
 package:
-  name: {{ name|lower }}
-  version: {{ version }}
+  name: caper
+  version: ${{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/c/caper/caper-${{ version }}.tar.gz
   sha256: ef698c9c34fa181759cfa84813ccc07b5ed466931410c1cca36da01808ca363a
 
 build:
-  skip: true  # [py<36 or win]
-  number: 1
-  script: {{ PYTHON }} -m pip install . -vv
+  number: 0
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+
 
 requirements:
   host:
@@ -32,20 +34,22 @@ requirements:
     - matplotlib >=1.5
     - six >=1.13.0
 
-test:
-  imports:
-    - caper
+tests:
+  - python:
+      imports:
+        - caper
+      pip_check: true
 
 about:
-  home: https://github.com/ENCODE-DCC/caper
   license: MIT
-  license_family: MIT
   license_file: LICENSE
   summary: Cromwell Assisted Pipeline ExecutoR
   description: |
     Python wrapper for Cromwell
-  dev_url: https://github.com/ENCODE-DCC/caper
+  homepage: https://github.com/ENCODE-DCC/caper
+  repository: https://github.com/ENCODE-DCC/caper
 
 extra:
   recipe-maintainers:
+    - danielnachun
     - leepc12
